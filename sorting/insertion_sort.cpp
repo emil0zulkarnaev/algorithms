@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#define LEN 5
+#define LEN 6
 
 int ms[LEN] = {0};
 
@@ -19,11 +19,11 @@ void output() {
 	printf("\n");
 }
 
-void sort() {
+void sort(bool direction) {
 	for (int j=1; j<LEN; j++) {
 		int key = ms[j];
 		int i = j-1;
-		while (i >= 0 && ms[i] > key) {
+		while (i >= 0 && (ms[i] > key && direction || ms[i] < key && !direction) ) {
 			ms[i+1] = ms[i];
 			i--;
 		}
@@ -35,7 +35,7 @@ int main()
 {
 	input();
 	output();
-	sort();
+	sort(false);
 	output();
 	return 0;
 }
