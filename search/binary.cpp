@@ -1,5 +1,6 @@
 #include <stdio.h>
-#include <vector>
+#include <vector> 
+#include "ioms.h"
 
 bool stupid_verification(std::vector<int> &v) {
 	bool result = true;
@@ -13,6 +14,7 @@ bool stupid_verification(std::vector<int> &v) {
 	return result;
 }
 
+// простое решение
 int find(std::vector<int> &v, int value) {
 	int start = 0,
 		stop  = v.size() - 1,
@@ -35,20 +37,35 @@ int find(std::vector<int> &v, int value) {
 	return result;
 }
 
+// "элегантное решение" при помощи "разделяй и властвуй"
+int pretty_find(std::vector<int> &v, int value) {
+	int size   = v.size(),
+		middle = size/2;
+
+	if (v[middle] == value)
+		return middle;
+	else {
+		int multiplier = 1;
+		std::vector<int> v_new;
+
+		if (v[middle] < value) {
+			v_new.assign(v.begin()+middle+1, v.end());
+		}
+		else {
+			v_new.assign(v.begin(), v.end()-middle);
+			multiplier = -1;
+		}
+
+		return (multiplier > 0 ? middle + 1 : 0) + pretty_find(v_new, value);
+	}
+}
+
 int main()
 {
-	int N = 0, number = 0;
+	int number = 0;
 	std::vector<int> v;
 
-	printf("Введите длину массива: ");
-	scanf("%d", &N);
-	printf("Введите массив чисел в отсортированном порядке:\n");
-
-	for (int i=0; i<N; i++) {
-		printf("-> ");
-		scanf("%d", &number);
-		v.push_back(number);
-	}
+	input_v_(v);
 
 	if (!stupid_verification(v)) { printf("Массив не отсортирован!\n"); return 1; }
 
@@ -61,6 +78,13 @@ int main()
 		printf("Элемент не найден\n");
 	else
 		printf("Элемент находится по индексу: %d\n", result);
+
+	result = pretty_find(v, number);
+	if (result == -1) 
+		printf("Элемент не найден (pretty_find)\n");
+	else
+		printf("Элемент находится по индексу (pretty_find): %d\n", result);
+	printf("Это конечно было очевидно, но я же должен был выполнить эту функцию\n");
 
 	return 0;
 }
