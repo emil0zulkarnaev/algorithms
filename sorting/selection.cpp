@@ -29,8 +29,12 @@ void selection_sort(std::vector<int> &v, std::vector<int> &result, bool flag) {
 int main()
 {
 	std::vector<int> v, result;
-	input_v(v);
-	selection_sort(v, result, false);
+	input_v_(v);
+	int sorting_direction = 0;
+	printf("Выберите направление сортировки:\n1-по возрастанию\n2-по убыванию\n-> ");
+	while (sorting_direction != 1 && sorting_direction != 2)
+		scanf("%d", &sorting_direction);
+	selection_sort(v, result, sorting_direction == 1 ? true : false);
 	output_v(result);
 	return 0;
 }
