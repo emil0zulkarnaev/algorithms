@@ -19,7 +19,7 @@ void output() {
 	printf("\n");
 }
 
-void sort(bool direction) {
+void insertion_sort(bool direction) {
 	for (int j=1; j<LEN; j++) {
 		int key = ms[j];
 		int i = j-1;
@@ -35,7 +35,7 @@ int main()
 {
 	input();
 	output();
-	sort(false);
+	insertion_sort(false);
 	output();
 	return 0;
 }
