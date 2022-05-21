@@ -1,4 +1,4 @@
 INCLUDE=$(shell pwd)/../common/
 
-selection:
-	g++ -I${INCLUDE} selection.cpp ${INCLUDE}ioms.cpp && clear && ./a.out
+%:
+	g++ -I${INCLUDE} $@.cpp ${INCLUDE}ioms.cpp && clear && ./a.out
