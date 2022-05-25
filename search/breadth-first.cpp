@@ -74,13 +74,13 @@ int find(
 
 int main()
 {
-	std::vector<std::vector<int>> matrix;
+	std::vector<std::vector<int>> matrix, weights;
 
 	int points_count = 0;
 	std::cout << "Введите количество пунктов: ";
 	std::cin  >> points_count;
 
-	conn_matrix(matrix, points_count, false, false);
+	conn_matrix(matrix, weights, points_count, false, false);
 	output_conn_matrix(matrix);
 	std::cout << "--------------------\n";
 	output_conn_matrix_by_name(matrix);
@@ -95,6 +95,8 @@ int main()
 	std::cout << "Путь из " << start << " в " << stop << (result ? " ЕСТЬ" : " НЕ СУЩЕСТВУЕТ");
 	if (result)
 		std::cout << " (" << result << ")\n";
+	else
+		std::cout << std::endl;
 
 	return 0;
 }
