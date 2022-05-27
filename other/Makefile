@@ -1,4 +1,7 @@
-INCLUDE=$(shell pwd)/../common/
+PWD=$(shell pwd)
+INCLUDE=${PWD}/../common/ \
+		${PWD}/../sorting/ \
+		${PWD}/../search
 
 %:
-	g++ -I${INCLUDE} $@.cpp ${INCLUDE}ioms.cpp && clear && ./a.out
+	g++ $(foreach d, $(INCLUDE), -I$d) $@.cpp ${PWD}/../common/structs.cpp ${PWD}/../common/ioms.cpp ${PWD}/../sorting/fast.cpp ${PWD}/../search/binary.cpp && ./a.out
