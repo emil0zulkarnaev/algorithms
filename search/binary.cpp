@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <vector> 
+#include "binary.h"
 #include "ioms.h"
 
 bool stupid_verification(std::vector<int> &v) {
@@ -60,6 +60,7 @@ int pretty_find(std::vector<int> &v, int value) {
 	}
 }
 
+/*
 int main()
 {
 	int number = 0;
@@ -88,3 +89,4 @@ int main()
 
 	return 0;
 }
+*/

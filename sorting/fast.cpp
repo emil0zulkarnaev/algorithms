@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <vector>
+#include "fast.h"
 #include "ioms.h"
 
 // "Быстрая сортировка"
@@ -45,6 +45,7 @@ void sort(std::vector<int> &v, bool flag) {
 	}
 }
 
+/*
 int main()
 {
 	std::vector<int> v;
@@ -61,3 +62,4 @@ int main()
 
 	return 0;
 }
+*/
